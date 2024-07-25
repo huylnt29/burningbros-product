@@ -1,4 +1,4 @@
-import 'package:burningbros_product/core/data/model/paginated_product.dart';
+import 'package:burningbros_product/feature/product/data/model/paginated_product.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 

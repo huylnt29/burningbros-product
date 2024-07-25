@@ -1,4 +1,4 @@
-import 'package:burningbros_product/core/data/model/product.dart';
+import 'package:burningbros_product/feature/product/data/model/product.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'paginated_product.g.dart';
