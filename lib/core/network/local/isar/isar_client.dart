@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:burningbros_product/core/data/model/product.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -20,7 +21,9 @@ mixin IsarClient {
     await isarDir.create(recursive: true);
 
     final isar = await Isar.open(
-      [],
+      [
+        ProductSchema,
+      ],
       directory: isarDir.path,
       inspector: true,
     );

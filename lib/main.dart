@@ -22,7 +22,7 @@ void main() async {
       );
 
       await SharedPreferencesClient.init();
-      // await IsarClient.init();
+      await IsarClient.init();
 
       Routes.configureRoutes();
 
