@@ -35,7 +35,7 @@ class _ProductCardState extends State<ProductCard> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  8.vertical,
+                  12.vertical,
                   Text(
                     product.title ?? '',
                     style: AppTextStyle.text(bold: true),

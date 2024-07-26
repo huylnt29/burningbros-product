@@ -4,5 +4,6 @@
   "products": "Products",
   "error": "An error has occured",
   "addToFavoriteList": "Add to favorite list",
-  "nothingMoreToShow": "There is nothing more to show"
+  "nothingMoreToShow": "There is nothing more to show",
+  "noData": "There is nothing to show"
 }

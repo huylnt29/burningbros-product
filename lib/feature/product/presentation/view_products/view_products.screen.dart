@@ -95,6 +95,12 @@ class _ViewProductsScreenState extends State<ViewProductsScreen> {
             );
 
           case RequestState.loaded:
+            if (state.result?.isEmpty ?? true) {
+              return Announcement(
+                message: Localization.of(context)!.noData,
+                imagePath: Assets.image.empty.path,
+              );
+            }
             return Column(
               children: [
                 AppListView(
