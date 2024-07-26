@@ -36,7 +36,7 @@ class Product {
 
   @JsonKey(includeFromJson: false)
   Id isarKey = Isar.autoIncrement;
-  @Index(unique: true)
+  @Index(unique: true, replace: true)
   int? id;
   String? title;
   String? description;

@@ -1,3 +1,4 @@
+import 'package:burningbros_product/feature/product/data/model/paginated_product.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -9,4 +10,9 @@ abstract class RestApiClient {
     Dio dio, {
     String baseUrl,
   }) = _RestApiClient;
+
+  @GET('/products?limit=20&sortBy=id&order=asc')
+  Future<PaginatedProduct> getProducts({
+    @Query('skip') String? skip,
+  });
 }

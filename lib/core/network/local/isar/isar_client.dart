@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:burningbros_product/core/data/model/product.dart';
+import 'package:burningbros_product/feature/product/data/model/product.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 
