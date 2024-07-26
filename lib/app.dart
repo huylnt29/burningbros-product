@@ -1,3 +1,4 @@
+import 'package:burningbros_product/core/extension/app.dart';
 import 'package:burningbros_product/core/extension/widget.dart';
 import 'package:burningbros_product/core/routing/route_config.dart';
 import 'package:burningbros_product/core/routing/route_path.dart';
@@ -39,6 +40,6 @@ class _AppState extends State<App> {
         GlobalCupertinoLocalizations.delegate,
       ],
       debugShowCheckedModeBanner: false,
-    ).wrapWithResponsiveSizer();
+    ).wrapWithMultiBlocProvider().wrapWithResponsiveSizer();
   }
 }

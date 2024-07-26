@@ -30,7 +30,8 @@ class SearchForProductsBody extends StatelessWidget {
               return AppListView(
                 direction: Axis.vertical,
                 seperator: 18.vertical,
-                children: state.result!.map((e) => ProductCard(e)).toList(),
+                children:
+                    state.result!.map((e) => ProductCard(product: e)).toList(),
               ).wrapWithSingleChildScrollView();
             }
 

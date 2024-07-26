@@ -55,7 +55,10 @@ class _ViewProductsScreenState extends State<ViewProductsScreen> {
           IconButton(
             iconSize: 18.sf,
             color: AppColor.primary,
-            onPressed: () => {},
+            onPressed: () => Routes.router.navigateTo(
+              context,
+              RoutePath.favaroiteProducts,
+            ),
             icon: const Icon(Icons.favorite_border),
           ),
           IconButton(
@@ -90,7 +93,9 @@ class _ViewProductsScreenState extends State<ViewProductsScreen> {
               direction: Axis.vertical,
               seperator: 18.vertical,
               children: [
-                ...(state.result ?? []).map((e) => ProductCard(e)),
+                ...(state.result ?? []).map((e) => ProductCard(
+                      product: e,
+                    )),
                 ListViewShimmer(
                   itemCount: 7,
                   itemHeight: 27.h,
@@ -110,7 +115,9 @@ class _ViewProductsScreenState extends State<ViewProductsScreen> {
                 AppListView(
                   direction: Axis.vertical,
                   seperator: 18.vertical,
-                  children: state.result!.map((e) => ProductCard(e)).toList(),
+                  children: state.result!
+                      .map((e) => ProductCard(product: e))
+                      .toList(),
                 ),
                 if (state.paginationMeta!.skip >=
                     state.paginationMeta!.total) ...[

@@ -21,6 +21,8 @@ import '../../feature/product/domain/repository/product.repository_impl.dart'
 import '../../feature/product/domain/use_case/product.use_case.dart' as _i8;
 import '../../feature/product/presentation/search_for_products/bloc/search_products.bloc.dart'
     as _i9;
+import '../../feature/product/presentation/view_favorite_products/bloc/favorite_products.bloc.dart'
+    as _i11;
 import '../../feature/product/presentation/view_products/bloc/view_products.bloc.dart'
     as _i10;
 import '../network/remote/rest_api_client.dart' as _i5;
@@ -49,5 +51,7 @@ _i1.GetIt $initGetIt(
       () => _i9.SearchProductsBloc(gh<_i8.ProductUseCase>()));
   gh.factory<_i10.ViewProductsBloc>(
       () => _i10.ViewProductsBloc(gh<_i8.ProductUseCase>()));
+  gh.factory<_i11.FavoriteProductsBloc>(
+      () => _i11.FavoriteProductsBloc(gh<_i8.ProductUseCase>()));
   return getIt;
 }

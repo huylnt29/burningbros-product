@@ -5,12 +5,19 @@ import 'package:burningbros_product/core/style/color.dart';
 import 'package:burningbros_product/core/style/text_style.dart';
 import 'package:burningbros_product/core/widget/network_image.dart';
 import 'package:burningbros_product/feature/product/data/model/product.dart';
+import 'package:burningbros_product/feature/product/presentation/view_favorite_products/bloc/favorite_products.bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/localization.dart';
 
 class ProductCard extends StatefulWidget {
-  const ProductCard(this.product, {super.key});
+  const ProductCard({
+    required this.product,
+    this.isFavorited = false,
+    super.key,
+  });
   final Product product;
+  final bool isFavorited;
   @override
   State<ProductCard> createState() => _ProductCardState();
 }
@@ -63,23 +70,56 @@ class _ProductCardState extends State<ProductCard> {
             ],
           ),
           3.vertical,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.favorite_border_rounded,
-                size: 24.sf,
-              ),
-              12.horizontal,
-              Text(
-                Localization.of(context)!.addToFavoriteList,
-                style: AppTextStyle.smallText(),
-              ),
-            ],
-          ),
+          buildFavoriteOptions(),
           8.vertical,
         ],
       ),
     );
+  }
+
+  buildFavoriteOptions() {
+    if (widget.isFavorited == false) {
+      return InkWell(
+        onTap: () {
+          context.read<FavoriteProductsBloc>().add(Favorite(widget.product));
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.favorite_border,
+              size: 24.sf,
+              color: AppColor.accentOrange,
+            ),
+            8.horizontal,
+            Text(
+              Localization.of(context)!.addToFavoriteList,
+              style: AppTextStyle.smallText(),
+            ),
+          ],
+        ),
+      );
+    } else {
+      return InkWell(
+        onTap: () {
+          context.read<FavoriteProductsBloc>().add(Unfavorite(widget.product));
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.unpublished,
+              size: 24.sf,
+              color: AppColor.accentRed,
+            ),
+            8.horizontal,
+            Text(
+              Localization.of(context)!.removeFromFavoriteList,
+              style: AppTextStyle.smallText(),
+            ),
+          ],
+        ),
+      );
+    }
   }
 }
