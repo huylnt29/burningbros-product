@@ -1,9 +1,12 @@
+import 'package:burningbros_product/core/service_locator/service_locator.dart';
+import 'package:burningbros_product/feature/product/presentation/view_products/bloc/view_products.bloc.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/widgets.dart';
 import 'package:burningbros_product/feature/product/presentation/search_for_products/search_for_products.screen.dart';
 import 'package:burningbros_product/feature/product/presentation/view_favorite_products/view_favorite_products.screen.dart';
 import 'package:burningbros_product/feature/product/presentation/view_products/view_products.screen.dart';
 import 'package:burningbros_product/feature/splash/presentation/splash.screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 Handler splashHandler = Handler(
   handlerFunc: (
@@ -18,7 +21,10 @@ Handler viewProductsHandler = Handler(
     BuildContext? context,
     Map<String, List<String>> params,
   ) {
-    return const ViewProductsScreen();
+    return BlocProvider(
+      create: (context) => getIt<ViewProductsBloc>()..add(VisitTheScreen()),
+      child: const ViewProductsScreen(),
+    );
   },
 );
 

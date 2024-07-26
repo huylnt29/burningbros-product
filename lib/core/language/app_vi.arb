@@ -1,4 +1,6 @@
 {
   "appName": "Burning Bros Product",
-  "slogan": "The beautiful product store"
+  "slogan": "The beautiful product store",
+  "products": "Products",
+  "error": "An error has occured"
 }

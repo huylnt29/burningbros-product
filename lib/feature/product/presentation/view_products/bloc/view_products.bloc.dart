@@ -23,7 +23,7 @@ class ViewProductsBloc extends Bloc<ViewProductsEvent, ViewProductsState> {
       );
       emit(state.copyWith(
         requestState: RequestState.loaded,
-        result: res.products,
+        result: (state.result ?? []) + (res.products ?? []),
         paginationMeta: res.getMeta(),
       ));
     });
