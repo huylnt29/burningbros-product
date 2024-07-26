@@ -1,3 +1,4 @@
+import 'package:burningbros_product/core/data/model/pagination_meta.dart';
 import 'package:burningbros_product/feature/product/data/model/product.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -20,4 +21,10 @@ class PaginatedProduct {
   int? total;
   int? skip;
   int? limit;
+}
+
+extension PaginatedProductX on PaginatedProduct {
+  PaginationMeta getMeta() {
+    return PaginationMeta(total: total!, skip: skip!, limit: limit!);
+  }
 }

@@ -7,5 +7,5 @@ abstract class ProductRepository {
   final ProductRemoteDataSource remoteDataSource;
   final ProductLocalDataSource localDataSource;
 
-  Future<PaginatedProduct> getProductsRemote();
+  Future<PaginatedProduct> getManyRemote({int? skip});
 }

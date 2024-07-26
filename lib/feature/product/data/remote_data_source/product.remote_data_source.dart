@@ -5,7 +5,7 @@ class ProductRemoteDataSource {
   ProductRemoteDataSource(this.restApiClient);
   final RestApiClient restApiClient;
 
-  Future<PaginatedProduct> getProducts({int? skip}) async {
+  Future<PaginatedProduct> getMany({int? skip}) async {
     final response = await restApiClient.getProducts(
       skip: skip.toString(),
     );
