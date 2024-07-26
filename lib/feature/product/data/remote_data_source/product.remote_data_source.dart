@@ -16,9 +16,11 @@ class ProductRemoteDataSource {
     }
   }
 
-  Future<PaginatedProduct?> getManyBySearching() async {
+  Future<PaginatedProduct?> getManyBySearching(String keyword) async {
     try {
-      final response = await restApiClient.getProductsSearch();
+      final response = await restApiClient.getProductsSearch(
+        query: keyword,
+      );
       return response;
     } on Exception catch (_) {
       return null;

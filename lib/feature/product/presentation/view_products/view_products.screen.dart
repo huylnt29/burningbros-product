@@ -1,7 +1,8 @@
 import 'package:burningbros_product/core/enumeration/request_state.dart';
 import 'package:burningbros_product/core/extension/font_size.dart';
-import 'package:burningbros_product/core/extension/widget.dart';
 import 'package:burningbros_product/core/generated/assets.gen.dart';
+import 'package:burningbros_product/core/routing/route_config.dart';
+import 'package:burningbros_product/core/routing/route_path.dart';
 import 'package:burningbros_product/core/style/color.dart';
 import 'package:burningbros_product/core/style/text_style.dart';
 import 'package:burningbros_product/core/widget/announcment.dart';
@@ -60,7 +61,10 @@ class _ViewProductsScreenState extends State<ViewProductsScreen> {
           IconButton(
             iconSize: 18.sf,
             color: AppColor.primary,
-            onPressed: () => {},
+            onPressed: () => Routes.router.navigateTo(
+              context,
+              RoutePath.searchForProducts,
+            ),
             icon: const Icon(Icons.search),
           ),
         ],

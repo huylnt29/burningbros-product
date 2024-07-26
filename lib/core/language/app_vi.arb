@@ -5,5 +5,6 @@
   "error": "An error has occured",
   "addToFavoriteList": "Add to favorite list",
   "nothingMoreToShow": "There is nothing more to show",
-  "noData": "There is nothing to show"
+  "noData": "There is nothing to show",
+  "searchProducPlaceholder": "Search product by name..."
 }

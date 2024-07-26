@@ -8,5 +8,5 @@ abstract class ProductRepository {
   final ProductLocalDataSource localDataSource;
 
   Future<PaginatedProduct?> getManyRemote({int? skip});
-  Future<PaginatedProduct?> getManyBySearchingRemote();
+  Future<PaginatedProduct?> getManyBySearchingRemote(String keyword);
 }

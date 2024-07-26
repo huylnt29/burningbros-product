@@ -17,5 +17,7 @@ abstract class RestApiClient {
   });
 
   @GET('/products/search?sortBy=id&order=asc&limit=0')
-  Future<PaginatedProduct> getProductsSearch();
+  Future<PaginatedProduct> getProductsSearch({
+    @Query('q') String? query,
+  });
 }

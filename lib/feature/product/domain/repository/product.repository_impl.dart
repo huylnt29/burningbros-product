@@ -16,8 +16,8 @@ class ProductRepositoryImpl extends ProductRepository {
   }
 
   @override
-  Future<PaginatedProduct?> getManyBySearchingRemote() async {
-    final res = await remoteDataSource.getManyBySearching();
+  Future<PaginatedProduct?> getManyBySearchingRemote(String keyword) async {
+    final res = await remoteDataSource.getManyBySearching(keyword);
     return res;
   }
 }
