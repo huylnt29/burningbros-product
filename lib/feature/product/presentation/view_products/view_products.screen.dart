@@ -1,5 +1,6 @@
 import 'package:burningbros_product/core/enumeration/request_state.dart';
 import 'package:burningbros_product/core/extension/font_size.dart';
+import 'package:burningbros_product/core/extension/widget.dart';
 import 'package:burningbros_product/core/generated/assets.gen.dart';
 import 'package:burningbros_product/core/style/color.dart';
 import 'package:burningbros_product/core/style/text_style.dart';
@@ -46,7 +47,7 @@ class _ViewProductsScreenState extends State<ViewProductsScreen> {
           ),
         ],
       ),
-      body: buildBody(),
+      body: buildBody().wrapWithSingleChildScrollView(),
       backgroundColor: AppColor.accent,
       bodyBgColor: AppColor.extremeLightGray,
     );
@@ -57,7 +58,7 @@ class _ViewProductsScreenState extends State<ViewProductsScreen> {
       builder: (context, state) {
         switch (state.requestState) {
           case RequestState.initial:
-            return const SizedBox.expand();
+            return const SizedBox.shrink();
 
           case RequestState.loading:
             return AppListView(
