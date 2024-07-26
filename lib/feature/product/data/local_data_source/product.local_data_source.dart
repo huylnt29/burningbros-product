@@ -1,10 +1,10 @@
+import 'package:isar/isar.dart';
 import 'package:burningbros_product/core/network/local/isar/isar_client.dart';
 import 'package:burningbros_product/feature/product/data/model/product.dart';
-import 'package:isar/isar.dart';
 
-class CollectionLocalDataSource with IsarClient {
+class ProductLocalDataSource with IsarClient {
   late IsarCollection<Product> productCollection;
-  CollectionLocalDataSource() {
+  ProductLocalDataSource() {
     productCollection = isarInstance!.collection<Product>();
   }
 
