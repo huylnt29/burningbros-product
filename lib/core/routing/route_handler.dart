@@ -1,8 +1,8 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/widgets.dart';
-import 'package:burningbros_product/feature/product/presentation/search_for_products/presentation/search_for_products.screen.dart';
-import 'package:burningbros_product/feature/product/presentation/view_favorite_products/presentation/view_favorite_products.screen.dart';
-import 'package:burningbros_product/feature/product/presentation/view_products/presentation/view_products.screen.dart';
+import 'package:burningbros_product/feature/product/presentation/search_for_products/search_for_products.screen.dart';
+import 'package:burningbros_product/feature/product/presentation/view_favorite_products/view_favorite_products.screen.dart';
+import 'package:burningbros_product/feature/product/presentation/view_products/view_products.screen.dart';
 import 'package:burningbros_product/feature/splash/presentation/splash.screen.dart';
 
 Handler splashHandler = Handler(
