@@ -1,0 +1,13 @@
+{
+  "appName": "Burning Bros Product",
+  "slogan": "The beautiful product store",
+  "products": "Products",
+  "error": "An error has occured",
+  "addToFavoriteList": "Add to favorite list",
+  "nothingMoreToShow": "There is nothing more to show",
+  "noData": "There is nothing to show",
+  "searchProducPlaceholder": "Search product by name...",
+  "removeFromFavoriteList": "Remove from favorite list",
+  "favoriteProducts": "Favorite",
+  "internetLoss": "There is network issue. Pleae check your connection"
+}

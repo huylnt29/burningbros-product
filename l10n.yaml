@@ -1,5 +1,5 @@
 arb-dir: lib/core/language
-template-arb-file: app_vi.arb
+template-arb-file: app_en.arb
 output-localization-file: localization.dart
 output-class: Localization
 output-dir: lib/core/language/l10n
