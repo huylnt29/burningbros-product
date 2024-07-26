@@ -10,7 +10,7 @@ class ProductRepositoryImpl extends ProductRepository {
   );
 
   @override
-  Future<PaginatedProduct> getManyRemote({int? skip}) async {
+  Future<PaginatedProduct?> getManyRemote({int? skip}) async {
     final res = await remoteDataSource.getMany(skip: skip);
     return res;
   }

@@ -19,22 +19,30 @@ class ViewProductsBloc extends Bloc<ViewProductsEvent, ViewProductsState> {
     on<VisitTheScreen>((event, emit) async {
       emit(state.copyWith(requestState: RequestState.loading));
       final res = await useCase.getManyWithPaging(state.paginationMeta);
-      emit(state.copyWith(
-        requestState: RequestState.loaded,
-        result: res.products!,
-        paginationMeta: res.getMeta(),
-      ));
+      if (res == null) {
+        emit(state.copyWith(requestState: RequestState.error));
+      } else {
+        emit(state.copyWith(
+          requestState: RequestState.loaded,
+          result: res.products!,
+          paginationMeta: res.getMeta(),
+        ));
+      }
     });
     on<LoadMore>((event, emit) async {
       emit(state.copyWith(requestState: RequestState.loading));
       final res = await useCase.getManyWithPaging(
         state.paginationMeta,
       );
-      emit(state.copyWith(
-        requestState: RequestState.loaded,
-        result: (state.result ?? []) + res.products!,
-        paginationMeta: res.getMeta(),
-      ));
+      if (res == null) {
+        emit(state.copyWith(requestState: RequestState.error));
+      } else {
+        emit(state.copyWith(
+          requestState: RequestState.loaded,
+          result: (state.result ?? []) + res.products!,
+          paginationMeta: res.getMeta(),
+        ));
+      }
     });
   }
 

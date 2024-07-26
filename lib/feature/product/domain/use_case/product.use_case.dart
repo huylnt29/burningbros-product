@@ -7,7 +7,7 @@ class ProductUseCase {
   ProductUseCase(this.repository);
   final ProductRepository repository;
 
-  Future<PaginatedProduct> getManyWithPaging(
+  Future<PaginatedProduct?> getManyWithPaging(
     PaginationMeta? paginationMeta,
   ) async {
     final res = await repository.getManyRemote(
