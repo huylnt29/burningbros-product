@@ -7,5 +7,6 @@
   "nothingMoreToShow": "There is nothing more to show",
   "noData": "There is nothing to show",
   "searchProducPlaceholder": "Search product by name...",
-  "removeFromFavoriteList": "Remove from favorite list"
+  "removeFromFavoriteList": "Remove from favorite list",
+  "favoriteProducts": "Favorite"
 }

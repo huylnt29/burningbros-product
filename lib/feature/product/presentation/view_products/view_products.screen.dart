@@ -55,7 +55,10 @@ class _ViewProductsScreenState extends State<ViewProductsScreen> {
           IconButton(
             iconSize: 18.sf,
             color: AppColor.primary,
-            onPressed: () => {},
+            onPressed: () => Routes.router.navigateTo(
+              context,
+              RoutePath.favaroiteProducts,
+            ),
             icon: const Icon(Icons.favorite_border),
           ),
           IconButton(

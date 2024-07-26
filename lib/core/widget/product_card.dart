@@ -21,7 +21,7 @@ class ProductCard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<ProductCard> {
-  late ValueNotifier<bool> favoriteValueNotifier;
+  final favoriteValueNotifier = ValueNotifier(false);
 
   @override
   void initState() {
