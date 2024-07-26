@@ -18,7 +18,7 @@ class ViewProductsBloc extends Bloc<ViewProductsEvent, ViewProductsState> {
         )) {
     on<VisitTheScreen>((event, emit) async {
       emit(state.copyWith(requestState: RequestState.loading));
-      final res = await useCase.getManyWithPaging(null);
+      final res = await useCase.getManyWithPaging(state.paginationMeta);
       emit(state.copyWith(
         requestState: RequestState.loaded,
         result: res.products!,
@@ -28,7 +28,7 @@ class ViewProductsBloc extends Bloc<ViewProductsEvent, ViewProductsState> {
     on<LoadMore>((event, emit) async {
       emit(state.copyWith(requestState: RequestState.loading));
       final res = await useCase.getManyWithPaging(
-        state.paginationMeta?.skip,
+        state.paginationMeta,
       );
       emit(state.copyWith(
         requestState: RequestState.loaded,

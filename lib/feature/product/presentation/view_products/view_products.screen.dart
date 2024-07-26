@@ -24,15 +24,18 @@ class ViewProductsScreen extends StatefulWidget {
 
 class _ViewProductsScreenState extends State<ViewProductsScreen> {
   final scrollController = ScrollController();
-
+  late ViewProductsBloc viewProductsBloc;
   @override
   void initState() {
     super.initState();
+    viewProductsBloc = context.read<ViewProductsBloc>();
     scrollController.addListener(() {
       if (scrollController.position.atEdge) {
         bool isTop = scrollController.position.pixels == 0;
         if (!isTop) {
-          context.read<ViewProductsBloc>().add(LoadMore());
+          if (viewProductsBloc.state.paginationMeta!.skip >=
+              viewProductsBloc.state.paginationMeta!.total) return;
+          viewProductsBloc.add(LoadMore());
         }
       }
     });
@@ -92,10 +95,23 @@ class _ViewProductsScreenState extends State<ViewProductsScreen> {
             );
 
           case RequestState.loaded:
-            return AppListView(
-              direction: Axis.vertical,
-              seperator: 18.vertical,
-              children: state.result!.map((e) => ProductCard(e)).toList(),
+            return Column(
+              children: [
+                AppListView(
+                  direction: Axis.vertical,
+                  seperator: 18.vertical,
+                  children: state.result!.map((e) => ProductCard(e)).toList(),
+                ),
+                if (state.paginationMeta!.skip >=
+                    state.paginationMeta!.total) ...[
+                  18.vertical,
+                  Text(
+                    Localization.of(context)!.nothingMoreToShow,
+                    style: AppTextStyle.text(),
+                    textAlign: TextAlign.center,
+                  )
+                ],
+              ],
             );
 
           case RequestState.error:

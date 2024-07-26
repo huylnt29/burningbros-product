@@ -3,5 +3,6 @@
   "slogan": "The beautiful product store",
   "products": "Products",
   "error": "An error has occured",
-  "addToFavoriteList": "Add to favorite list"
+  "addToFavoriteList": "Add to favorite list",
+  "nothingMoreToShow": "There is nothing more to show"
 }
