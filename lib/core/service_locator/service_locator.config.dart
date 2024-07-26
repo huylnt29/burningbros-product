@@ -19,8 +19,10 @@ import '../../feature/product/domain/repository/product.repository.dart' as _i6;
 import '../../feature/product/domain/repository/product.repository_impl.dart'
     as _i7;
 import '../../feature/product/domain/use_case/product.use_case.dart' as _i8;
-import '../../feature/product/presentation/view_products/bloc/view_products.bloc.dart'
+import '../../feature/product/presentation/search_for_products/bloc/search_products.bloc.dart'
     as _i9;
+import '../../feature/product/presentation/view_products/bloc/view_products.bloc.dart'
+    as _i10;
 import '../network/remote/rest_api_client.dart' as _i5;
 
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -43,7 +45,9 @@ _i1.GetIt $initGetIt(
       ));
   gh.factory<_i8.ProductUseCase>(
       () => _i8.ProductUseCase(gh<_i6.ProductRepository>()));
-  gh.factory<_i9.ViewProductsBloc>(
-      () => _i9.ViewProductsBloc(gh<_i8.ProductUseCase>()));
+  gh.factory<_i9.SearchProductsBloc>(
+      () => _i9.SearchProductsBloc(gh<_i8.ProductUseCase>()));
+  gh.factory<_i10.ViewProductsBloc>(
+      () => _i10.ViewProductsBloc(gh<_i8.ProductUseCase>()));
   return getIt;
 }

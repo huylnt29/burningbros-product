@@ -17,4 +17,9 @@ class ProductUseCase {
     );
     return res;
   }
+
+  Future<PaginatedProduct?> searchMany(String keyword) async {
+    final res = await repository.getManyBySearchingRemote(keyword);
+    return res;
+  }
 }

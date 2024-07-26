@@ -1,4 +1,5 @@
 import 'package:burningbros_product/core/service_locator/service_locator.dart';
+import 'package:burningbros_product/feature/product/presentation/search_for_products/bloc/search_products.bloc.dart';
 import 'package:burningbros_product/feature/product/presentation/view_products/bloc/view_products.bloc.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/widgets.dart';
@@ -42,6 +43,9 @@ Handler searchForProductsHandler = Handler(
     BuildContext? context,
     Map<String, List<String>> params,
   ) {
-    return const SearchForProductsScreen();
+    return BlocProvider(
+      create: (context) => getIt<SearchProductsBloc>(),
+      child: const SearchForProductsScreen(),
+    );
   },
 );
