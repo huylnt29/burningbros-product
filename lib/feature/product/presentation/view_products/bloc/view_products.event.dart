@@ -5,3 +5,7 @@ sealed class ViewProductsEvent {}
 class VisitTheScreen extends ViewProductsEvent {
   VisitTheScreen();
 }
+
+class LoadMore extends ViewProductsEvent {
+  LoadMore();
+}

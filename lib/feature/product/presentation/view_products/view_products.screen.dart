@@ -23,6 +23,21 @@ class ViewProductsScreen extends StatefulWidget {
 }
 
 class _ViewProductsScreenState extends State<ViewProductsScreen> {
+  final scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    scrollController.addListener(() {
+      if (scrollController.position.atEdge) {
+        bool isTop = scrollController.position.pixels == 0;
+        if (!isTop) {
+          context.read<ViewProductsBloc>().add(LoadMore());
+        }
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
@@ -47,7 +62,10 @@ class _ViewProductsScreenState extends State<ViewProductsScreen> {
           ),
         ],
       ),
-      body: buildBody().wrapWithSingleChildScrollView(),
+      body: SingleChildScrollView(
+        controller: scrollController,
+        child: buildBody(),
+      ),
       backgroundColor: AppColor.accent,
       bodyBgColor: AppColor.extremeLightGray,
     );
@@ -67,7 +85,7 @@ class _ViewProductsScreenState extends State<ViewProductsScreen> {
               children: [
                 ...(state.result ?? []).map((e) => ProductCard(e)),
                 ListViewShimmer(
-                  itemCount: 3,
+                  itemCount: 7,
                   itemHeight: 27.h,
                 ),
               ],
