@@ -25,6 +25,29 @@ class FavoriteProductsBloc
         result: res,
       ));
     });
+    on<Favorite>((event, emit) async {
+      emit(state.copyWith(addRequestState: RequestState.loading));
+      await useCase.favoriteOne(event.product);
+      add(RefreshTheScreen());
+      emit(state.copyWith(
+        addRequestState: RequestState.loaded,
+      ));
+    });
+    on<Unfavorite>((event, emit) async {
+      emit(state.copyWith(removeRequestState: RequestState.loading));
+      await useCase.unfavoriteOne(event.product);
+      add(RefreshTheScreen());
+      emit(state.copyWith(
+        removeRequestState: RequestState.loaded,
+      ));
+    });
+    on<RefreshTheScreen>((event, emit) async {
+      final res = await useCase.getAllFavorite();
+      emit(state.copyWith(
+        getRequestState: RequestState.loaded,
+        result: res,
+      ));
+    });
   }
 
   final ProductUseCase useCase;

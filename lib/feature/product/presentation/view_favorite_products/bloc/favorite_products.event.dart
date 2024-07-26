@@ -6,6 +6,10 @@ class VisitTheScreen extends FavoriteProductsEvent {
   VisitTheScreen();
 }
 
+class RefreshTheScreen extends FavoriteProductsEvent {
+  RefreshTheScreen();
+}
+
 class Favorite extends FavoriteProductsEvent {
   Favorite(this.product);
   final Product product;

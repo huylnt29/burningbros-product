@@ -5,7 +5,9 @@ import 'package:burningbros_product/core/style/color.dart';
 import 'package:burningbros_product/core/style/text_style.dart';
 import 'package:burningbros_product/core/widget/network_image.dart';
 import 'package:burningbros_product/feature/product/data/model/product.dart';
+import 'package:burningbros_product/feature/product/presentation/view_favorite_products/bloc/favorite_products.bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/localization.dart';
 
 class ProductCard extends StatefulWidget {
@@ -21,14 +23,6 @@ class ProductCard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<ProductCard> {
-  final favoriteValueNotifier = ValueNotifier(false);
-
-  @override
-  void initState() {
-    favoriteValueNotifier.value = widget.isFavorited;
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     final product = widget.product;
@@ -84,41 +78,48 @@ class _ProductCardState extends State<ProductCard> {
   }
 
   buildFavoriteOptions() {
-    return ValueListenableBuilder(
-      valueListenable: favoriteValueNotifier,
-      builder: (context, value, child) {
-        if (value == false) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.favorite_border_rounded,
-                size: 24.sf,
-              ),
-              12.horizontal,
-              Text(
-                Localization.of(context)!.addToFavoriteList,
-                style: AppTextStyle.smallText(),
-              ),
-            ],
-          );
-        } else {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.unpublished,
-                size: 24.sf,
-              ),
-              12.horizontal,
-              Text(
-                Localization.of(context)!.removeFromFavoriteList,
-                style: AppTextStyle.smallText(),
-              ),
-            ],
-          );
-        }
-      },
-    );
+    if (widget.isFavorited == false) {
+      return InkWell(
+        onTap: () {
+          context.read<FavoriteProductsBloc>().add(Favorite(widget.product));
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.favorite_border,
+              size: 24.sf,
+              color: AppColor.accentOrange,
+            ),
+            8.horizontal,
+            Text(
+              Localization.of(context)!.addToFavoriteList,
+              style: AppTextStyle.smallText(),
+            ),
+          ],
+        ),
+      );
+    } else {
+      return InkWell(
+        onTap: () {
+          context.read<FavoriteProductsBloc>().add(Unfavorite(widget.product));
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.unpublished,
+              size: 24.sf,
+              color: AppColor.accentRed,
+            ),
+            8.horizontal,
+            Text(
+              Localization.of(context)!.removeFromFavoriteList,
+              style: AppTextStyle.smallText(),
+            ),
+          ],
+        ),
+      );
+    }
   }
 }
