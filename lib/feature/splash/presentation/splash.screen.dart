@@ -18,11 +18,15 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(
       const Duration(milliseconds: 1500),
-      () => Routes.router.navigateTo(
-        context,
-        RoutePath.products,
-        replace: true,
-      ),
+      () {
+        if (mounted) {
+          Routes.router.navigateTo(
+            context,
+            RoutePath.products,
+            replace: true,
+          );
+        }
+      },
     );
     super.initState();
   }

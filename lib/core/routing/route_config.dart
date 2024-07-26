@@ -26,6 +26,10 @@ class Routes {
       RoutePath.searchForProducts,
       handler: searchForProductsHandler,
     );
+    setRouter(
+      RoutePath.internetLoss,
+      handler: loseInternetScreenHandler,
+    );
   }
 
   static void setRouter(

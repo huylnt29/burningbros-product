@@ -8,5 +8,6 @@
   "noData": "There is nothing to show",
   "searchProducPlaceholder": "Search product by name...",
   "removeFromFavoriteList": "Remove from favorite list",
-  "favoriteProducts": "Favorite"
+  "favoriteProducts": "Favorite",
+  "internetLoss": "There is network issue. Pleae check your connection"
 }

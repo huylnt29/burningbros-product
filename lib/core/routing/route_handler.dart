@@ -1,4 +1,5 @@
 import 'package:burningbros_product/core/service_locator/service_locator.dart';
+import 'package:burningbros_product/feature/internet/presentation/lose_internet.screen.dart';
 import 'package:burningbros_product/feature/product/presentation/search_for_products/bloc/search_products.bloc.dart';
 import 'package:burningbros_product/feature/product/presentation/view_products/bloc/view_products.bloc.dart';
 import 'package:fluro/fluro.dart';
@@ -47,5 +48,14 @@ Handler searchForProductsHandler = Handler(
       create: (context) => getIt<SearchProductsBloc>(),
       child: const SearchForProductsScreen(),
     );
+  },
+);
+
+Handler loseInternetScreenHandler = Handler(
+  handlerFunc: (
+    BuildContext? context,
+    Map<String, List<String>> params,
+  ) {
+    return const LoseInternetScreen();
   },
 );

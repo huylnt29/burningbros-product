@@ -1,4 +1,5 @@
 import 'package:burningbros_product/core/extension/app.dart';
+import 'package:burningbros_product/core/extension/logger.dart';
 import 'package:burningbros_product/core/extension/widget.dart';
 import 'package:burningbros_product/core/routing/route_config.dart';
 import 'package:burningbros_product/core/routing/route_path.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/localization.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -18,6 +20,27 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    InternetConnectionChecker().onStatusChange.listen((status) {
+      Logger.v(status);
+      if (status == InternetConnectionStatus.connected) {
+        Routes.router.navigateTo(
+          navigatorKey.currentContext!,
+          RoutePath.splash,
+          clearStack: true,
+        );
+      } else {
+        Routes.router.navigateTo(
+          navigatorKey.currentContext!,
+          RoutePath.internetLoss,
+          clearStack: true,
+        );
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
