@@ -10,6 +10,7 @@ abstract class ProductRepository {
 
   Future<PaginatedProduct?> getManyRemote({int? skip});
   Future<PaginatedProduct?> getManyBySearchingRemote(String keyword);
+  Future<List<Product>> getAllLocal();
   Future<int> addOneLocal(Product product);
   Future<bool> deleteOneLocal(Product product);
 }

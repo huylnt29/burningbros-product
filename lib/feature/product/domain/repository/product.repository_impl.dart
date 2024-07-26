@@ -23,6 +23,12 @@ class ProductRepositoryImpl extends ProductRepository {
   }
 
   @override
+  Future<List<Product>> getAllLocal() async {
+    final res = await localDataSource.getAll();
+    return res;
+  }
+
+  @override
   Future<int> addOneLocal(Product product) async {
     final res = await localDataSource.put(product);
     return res;

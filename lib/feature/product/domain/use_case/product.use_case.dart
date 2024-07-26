@@ -24,6 +24,11 @@ class ProductUseCase {
     return res;
   }
 
+  Future<List<Product>> getAllFavorite() async {
+    final res = await repository.getAllLocal();
+    return res;
+  }
+
   Future<int> favoriteOne(Product product) async {
     final res = await repository.addOneLocal(product);
     return res;
