@@ -9,13 +9,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/localization.dart';
 
 class ProductCard extends StatefulWidget {
-  const ProductCard(this.product, {super.key});
+  const ProductCard({
+    required this.product,
+    this.isFavorited = false,
+    super.key,
+  });
   final Product product;
+  final bool isFavorited;
   @override
   State<ProductCard> createState() => _ProductCardState();
 }
 
 class _ProductCardState extends State<ProductCard> {
+  late ValueNotifier<bool> favoriteValueNotifier;
+
+  @override
+  void initState() {
+    favoriteValueNotifier.value = widget.isFavorited;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final product = widget.product;
@@ -63,7 +76,19 @@ class _ProductCardState extends State<ProductCard> {
             ],
           ),
           3.vertical,
-          Row(
+          buildFavoriteOptions(),
+          8.vertical,
+        ],
+      ),
+    );
+  }
+
+  buildFavoriteOptions() {
+    return ValueListenableBuilder(
+      valueListenable: favoriteValueNotifier,
+      builder: (context, value, child) {
+        if (value == false) {
+          return Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
@@ -76,10 +101,24 @@ class _ProductCardState extends State<ProductCard> {
                 style: AppTextStyle.smallText(),
               ),
             ],
-          ),
-          8.vertical,
-        ],
-      ),
+          );
+        } else {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.unpublished,
+                size: 24.sf,
+              ),
+              12.horizontal,
+              Text(
+                Localization.of(context)!.removeFromFavoriteList,
+                style: AppTextStyle.smallText(),
+              ),
+            ],
+          );
+        }
+      },
     );
   }
 }

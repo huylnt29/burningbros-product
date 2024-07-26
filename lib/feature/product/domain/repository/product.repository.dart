@@ -1,5 +1,6 @@
 import 'package:burningbros_product/feature/product/data/local_data_source/product.local_data_source.dart';
 import 'package:burningbros_product/feature/product/data/model/paginated_product.dart';
+import 'package:burningbros_product/feature/product/data/model/product.dart';
 import 'package:burningbros_product/feature/product/data/remote_data_source/product.remote_data_source.dart';
 
 abstract class ProductRepository {
@@ -9,4 +10,6 @@ abstract class ProductRepository {
 
   Future<PaginatedProduct?> getManyRemote({int? skip});
   Future<PaginatedProduct?> getManyBySearchingRemote(String keyword);
+  Future<int> addOneLocal(Product product);
+  Future<bool> deleteOneLocal(Product product);
 }
