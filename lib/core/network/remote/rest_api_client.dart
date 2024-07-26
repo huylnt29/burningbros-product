@@ -11,8 +11,11 @@ abstract class RestApiClient {
     String baseUrl,
   }) = _RestApiClient;
 
-  @GET('/products?limit=20&sortBy=id&order=asc')
+  @GET('/products?sortBy=id&order=asc&limit=20')
   Future<PaginatedProduct> getProducts({
     @Query('skip') String? skip,
   });
+
+  @GET('/products/search?sortBy=id&order=asc&limit=0')
+  Future<PaginatedProduct> getProductsSearch();
 }
